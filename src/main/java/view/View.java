@@ -1,20 +1,22 @@
 package view;
 
 import controller.Controller;
-import model.Produtos;
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 
-public class View {
+public class View implements Observer {
 
-    Controller controller = new Controller();
+    Controller controller = new Controller(this);
     Scanner scan = new Scanner(System.in);
 
     public void menu() {
         System.out.println("0 - Criar produto " +
                 "\n 1 - Adicionar ao carrinho " +
                 "\n 2 - Remover do carrinho " +
-                "\n 3 - Listar produtos");
+                "\n 3 - Listar produtos" +
+                "\n 4 - Listar carrinho");
         Integer op = scan.nextInt();
 
         switch(op) {
@@ -30,13 +32,20 @@ public class View {
             case 3:
                 listarProdutos();
                 break;
+            case 4:
+                listarCarrinho();
+                break;
         }
+    }
+
+    private void listarCarrinho() {
+        System.out.println(controller.listarCarrinho());
     }
 
     private void removerCarrinho() {
         System.out.println("Selecione o produto");
         Integer op = scan.nextInt();
-        controller.removeProdutos(controller.getProduto(op));
+        controller.removeProdutos(controller.getProduto(op).get(0));
     }
 
     private void listarProdutos() {
@@ -46,7 +55,7 @@ public class View {
     private void adicionarCarrinho() {
         System.out.println("Selecione o produto");
         Integer op = scan.nextInt();
-        controller.addProdutos(controller.getProduto(op));
+        controller.addProdutos(controller.getProduto(op).get(0));
     }
 
     private void criarProduto() {
@@ -55,4 +64,12 @@ public class View {
         controller.createItem(nome);
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        String option = (String) arg;
+        if(option.equals("add"))
+            System.out.println("Produto adicionado");
+        if(option.equals("del"))
+            System.out.println("Produto removido");
+    }
 }

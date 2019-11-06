@@ -1,42 +1,55 @@
 package controller;
 
-import model.Produtos;
+import model.Carrinho;
+import model.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
 import java.util.stream.Collectors;
 
 public class Controller {
 
-    List<Produtos> produtos;
+    Carrinho carrinho;
+    List<Produto> produtos;
 
-    public Controller() {
-        this.produtos = new ArrayList<Produtos>();
+    public Controller(Observer obs) {
+        this.carrinho = Carrinho.getInstance();
+        this.produtos = new ArrayList<>();
+        carrinho.registra(obs);
     }
 
     public String listarProdutos() {
         String result = "LISTA DE ITENS \n\n";
-        for (Produtos produto : produtos) {
+        for (Produto produto : produtos) {
             result += "ID: " + produto.getId() + "----- Nome:" + produto.getNome() + "\n";
         }
         return result;
     }
 
     public void createItem(String nome) {
-        produtos.add(new Produtos(nome));
+        produtos.add(new Produto(nome));
     }
 
-    public List<Produtos> getProduto(Integer op) {
+    public List<Produto> getProduto(Integer op) {
         return produtos.stream()
                 .filter(produto -> produto.getId() == op)
                 .collect(Collectors.toList());
     }
 
-    public void addProdutos(List<Produtos> produto) {
-        produtos.addAll(produto);
+    public void addProdutos(Produto produto) {
+        carrinho.adicionaProduto(produto);
     }
 
-    public void removeProdutos(List<Produtos> produto) {
-        produtos.removeAll(produto);
+    public void removeProdutos(Produto produto) {
+        carrinho.removeProduto(produto);
+    }
+
+    public String listarCarrinho() {
+        String result = "CARRINHO \n\n";
+        for (Produto produto : carrinho.getProdutos()) {
+            result += "ID: " + produto.getId() + "----- Nome:" + produto.getNome() + "\n";
+        }
+        return result;
     }
 }

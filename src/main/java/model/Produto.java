@@ -1,12 +1,12 @@
 package model;
 
-public class Produtos {
+public class Produto {
 
     private static int idAux = 0;
     private int id;
     private String nome;
 
-    public Produtos(String nome) {
+    public Produto(String nome) {
         this.id = idAux;
         this.nome = nome;
         idAux++;
