@@ -1,4 +1,4 @@
-package model;
+package model.Pagamento.Cartao;
 
 public class Credito extends Cartao {
 

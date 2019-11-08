@@ -1,5 +1,7 @@
 package model;
 
+import model.Pagamento.Pagamento;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;

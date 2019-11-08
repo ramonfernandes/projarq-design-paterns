@@ -1,4 +1,4 @@
-package model;
+package model.Pagamento.Facade;
 
 public class PagamentoBoleto {
     public String pagar() {

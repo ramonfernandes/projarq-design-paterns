@@ -1,6 +1,8 @@
-package model;
+package model.Pagamento.Facade;
 
-public class PagamentoBoletoFacade implements Pagamento{
+import model.Pagamento.Pagamento;
+
+public class PagamentoBoletoFacade implements Pagamento {
     private PagamentoBoleto pagamentoBoleto;
 
     public PagamentoBoletoFacade(PagamentoBoleto pagamentoBoleto) {

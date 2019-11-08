@@ -1,4 +1,6 @@
-package model;
+package model.Pagamento.Facade;
+
+import model.Pagamento.Pagamento;
 
 public class PagamentoPaypalFacade implements Pagamento {
 

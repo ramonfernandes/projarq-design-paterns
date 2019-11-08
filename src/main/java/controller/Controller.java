@@ -1,6 +1,12 @@
 package controller;
 
 import model.*;
+import model.Pagamento.Cartao.Credito;
+import model.Pagamento.Cartao.Debito;
+import model.Pagamento.Facade.PagamentoBoleto;
+import model.Pagamento.Facade.PagamentoBoletoFacade;
+import model.Pagamento.Facade.PagamentoPaypal;
+import model.Pagamento.Facade.PagamentoPaypalFacade;
 
 import java.util.ArrayList;
 import java.util.List;
