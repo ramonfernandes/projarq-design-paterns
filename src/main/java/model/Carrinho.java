@@ -10,6 +10,7 @@ public class Carrinho extends Observable {
     private Observer view;
     private List<Produto> produtos;
     private static Carrinho carrinho;
+    private Pagamento meioDePagamento;
 
     public Pagamento getMeioDePagamento() {
         return meioDePagamento;
@@ -19,7 +20,6 @@ public class Carrinho extends Observable {
         this.meioDePagamento = meioDePagamento;
     }
 
-    private Pagamento meioDePagamento;
 
     private Carrinho() {
         this.produtos = new ArrayList<Produto>();

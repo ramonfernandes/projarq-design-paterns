@@ -1,9 +1,6 @@
 package controller;
 
-import model.Carrinho;
-import model.Credito;
-import model.Debito;
-import model.Produto;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +58,14 @@ public class Controller {
 
     public void pagarComCredito() {
         carrinho.setMeioDePagamento(new Credito());
+    }
+
+    public void pagarComPaypal() {
+        carrinho.setMeioDePagamento(new PagamentoPaypalFacade(new PagamentoPaypal()));
+    }
+
+    public void pagarComBoleto() {
+        carrinho.setMeioDePagamento(new PagamentoBoletoFacade(new PagamentoBoleto()));
     }
 
     public String pagar() {

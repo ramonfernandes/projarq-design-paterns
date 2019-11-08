@@ -50,8 +50,8 @@ public class View implements Observer {
         System.out.println(
                 "\n 0 - Cartão de Débito " +
                 "\n 1 - Cartão de Crédito " +
-                "\n 2 - Boleto" +
-                "\n 3 - Paypal");
+                "\n 2 - Paypal" +
+                "\n 3 - Boleto");
 
         Integer op = scan.nextInt();
 
@@ -63,7 +63,10 @@ public class View implements Observer {
                 controller.pagarComCredito();
                 break;
             case 2:
+                controller.pagarComPaypal();
+                break;
             case 3:
+                controller.pagarComBoleto();
         }
     }
 
