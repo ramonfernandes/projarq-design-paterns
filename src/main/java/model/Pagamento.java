@@ -1,4 +1,7 @@
 package model;
 
-public abstract class Pagamento {
+public interface Pagamento {
+
+    String pagar();
+
 }
