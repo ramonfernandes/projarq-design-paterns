@@ -10,6 +10,15 @@ public class Carrinho extends Observable {
     private Observer view;
     private List<Produto> produtos;
     private static Carrinho carrinho;
+
+    public Pagamento getMeioDePagamento() {
+        return meioDePagamento;
+    }
+
+    public void setMeioDePagamento(Pagamento meioDePagamento) {
+        this.meioDePagamento = meioDePagamento;
+    }
+
     private Pagamento meioDePagamento;
 
     private Carrinho() {

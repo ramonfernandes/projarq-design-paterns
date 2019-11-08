@@ -17,7 +17,8 @@ public class View implements Observer {
                 "\n 2 - Remover do carrinho " +
                 "\n 3 - Listar produtos" +
                 "\n 4 - Listar carrinho" +
-                "\n 5 - Adicionar método de pagamento");
+                "\n 5 - Adicionar método de pagamento" +
+                "\n 6 - Pagar");
 
         Integer op = scan.nextInt();
 
@@ -40,11 +41,14 @@ public class View implements Observer {
             case 5:
                 definirMetodoDePagamento();
                 break;
+            case 6:
+                System.out.println(controller.pagar());
         }
     }
 
     private void definirMetodoDePagamento() {
-        System.out.println("0 - Cartão de Débito " +
+        System.out.println(
+                "\n 0 - Cartão de Débito " +
                 "\n 1 - Cartão de Crédito " +
                 "\n 2 - Boleto" +
                 "\n 3 - Paypal");
@@ -53,7 +57,11 @@ public class View implements Observer {
 
         switch(op) {
             case 0:
+                controller.pagarComDebito();
+                break;
             case 1:
+                controller.pagarComCredito();
+                break;
             case 2:
             case 3:
         }

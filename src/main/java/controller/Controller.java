@@ -1,6 +1,8 @@
 package controller;
 
 import model.Carrinho;
+import model.Credito;
+import model.Debito;
 import model.Produto;
 
 import java.util.ArrayList;
@@ -51,5 +53,19 @@ public class Controller {
             result += "ID: " + produto.getId() + "----- Nome:" + produto.getNome() + "\n";
         }
         return result;
+    }
+
+    public void pagarComDebito() {
+        carrinho.setMeioDePagamento(new Debito());
+    }
+
+    public void pagarComCredito() {
+        carrinho.setMeioDePagamento(new Credito());
+    }
+
+    public String pagar() {
+        if (carrinho.getMeioDePagamento() != null)
+            return carrinho.getMeioDePagamento().pagar();
+        return "Meio de Pagamento não especificado";
     }
 }
